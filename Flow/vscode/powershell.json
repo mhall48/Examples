@@ -1,0 +1,144 @@
+{
+	// Place your powershell snippets in this file.
+
+	//Each snippet is defined under a snippet name and has a prefix, body and
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the
+	// same ids are connected.
+
+    // Example:
+	// "Print to console": {
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+
+	// docs https://code.visualstudio.com/docs/editor/userdefinedsnippets
+
+	// path "C:\Users\<username>\AppData\Roaming\Code\User\snippets\powershell.json"
+
+    // syntax key
+    // comments in this file
+    // \t replaces a tab
+	// \n is a newline
+	// \r is a carriage return
+	// \" is a double quote
+	// \\ used to escape $ for vars
+
+    // Remember you can't tab complete in a vscode snippet that I have found so, consider if the functionality is better in a snippet or a function?
+    // Snippets are good for code examples you want to use repeatedly in vscode and anything where text needs to be updated e.g. a scope.
+
+    // Workflow related stuff code
+
+
+    // Powershell Code Examples (Prefixed with PS-)
+
+	"PS-Reg-CaseSensitive": {
+	    "prefix": "PS-Reg-CaseSensitive",
+	    "body": [
+                    "# https://docs.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference#options",
+                    "",
+					"#Case sensitive validate pattern",
+					"",
+					"[ValidatePattern('^(?-i)[A-Z]{1}' +        # Match 1 upper case letter",
+                    "'[A-Za-z0-9]{1,}' +                        # Match any numbers or letters",
+					"'-' +                                      # Match a dash",
+					"'(?-i)[A-Z]{1}' +              		    # Match 1 upper case letter",
+					"'[A-Za-z0-9]{1,}$')]           		    # Match any numbers or letters e.g. should be Get-HotFix",
+					"[string]\\$Name,"
+	    ],
+	    "description": "Regex example"
+	},
+
+	"PS-ArrayList": {
+	    "prefix": "PS-ArrayList",
+	    "body": [
+			"[System.Collections.ArrayList]\\$${1:Name} = @()",
+			"\\$${1:Name}.Add('Value') | Out-Null"
+	    ],
+	    "description": "Array List"
+	},
+
+	"PS-fstring": {
+		"prefix": "PS-fstring",
+		"body": [
+				"# powershell f string example",
+				"#fstringexample",
+				"\\$url = '{0}?ref={1}' -f \\$url, \\$Version",
+				"$0"
+		],
+		"description": "powershell f string example"
+	},
+
+	"PS-PSO": {
+		"prefix": "PS-PSO",
+		"body": [
+					"\t\t# powershell pso object",
+					"\t\t\\$PSO = New-Object PSObject -Property @{",
+					"\t\t\t${1:KeyA} = \\$${2:VarA}",
+					"\t\t\t${3:KeyB} = \\$${4:VarB}",
+					"\t\t}",
+					"",
+					"\t\tAdd-Member -InputObject \\$PSO -MemberType NoteProperty -Name '${5:NameC}' -Value \\$${6:VarC}",
+					"$0"
+		],
+		"description": "powershell pso object"
+	},
+
+	"PS-Params": {
+	    "prefix": "PS-Params",
+	    "body": [
+                    "\t\t# powershell param example",
+                    "\t\t\\$Params = @{",
+                    "\t\t\t'${1:DisplayName}' = '${2:DisplayName}'",
+                    "\t\t\t'${3:RequiredServices}' = '${4:\\$true}'",
+                    "\t\t}",
+					"\t\t\\$Params.Add('Force', \\$true)",
+					"\t\t}",
+                    "\t\t${6:Get-service} @Params",
+                    "$0"
+	    ],
+	    "description": "powershell param"
+    },
+
+	"PS-SelectEx": {
+	    "prefix": "PS-SelectEx",
+	    "body": [
+                    "\t\t# powershell select object expression",
+                    "\t\tSelect-Object -Property Name, Directory, @{ Name = 'Thing'; Expression = {\\$_.Thing}}",
+                    "$0"
+	    ],
+	    "description": "powershell select object expression"
+    },
+
+	"PS-PSAExceptions": {
+	    "prefix": "PS-PSAExceptions",
+	    "body": [
+			"\t\t\t[System.Diagnostics.CodeAnalysis.SuppressMessageAttribute(\"PSUseApprovedVerbs\", \"\")]",
+			"\t\t\t[System.Diagnostics.CodeAnalysis.SuppressMessageAttribute(\"PSUseSingularNouns\", \"\")]",
+			"\t\t\t[System.Diagnostics.CodeAnalysis.SuppressMessageAttribute(\"PSAvoidUsingPositionalParameters\", \"\")]",
+			"\t\t\t[System.Diagnostics.CodeAnalysis.SuppressMessageAttribute(\"PSAvoidUsingWriteHost\", \"\")]"
+		],
+		"description": "PSA Exceptions"
+	},
+
+	"PS-GlobalVariable": {
+		"prefix": "PS-GlobalVariable",
+		"body": [
+		  "#var name is uppercase and underscores \\$GIT_REPO_ROOT",
+		  "\\$VarParams = @{",
+		  "\t'Name'        = 'GITHUB_ROOT_URL'",
+		  "\t'Value'       = 'https://github.com'",
+		  "\t'Description' = 'Github root url'",
+		  "\t'Scope'       = 'Script'",
+		  "\t'Force'       = \\$True",
+		  "\t'Option'      = 'ReadOnly'",
+		  "}",
+		  "Set-Variable @VarParams"
+		],
+		"description": "Global Variable"
+	}
+}

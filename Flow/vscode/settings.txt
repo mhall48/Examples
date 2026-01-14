@@ -1,0 +1,2 @@
+path to config file
+C:\Users\<user profile>\AppData\Roaming\Code\User\settings.json
