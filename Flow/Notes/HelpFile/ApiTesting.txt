@@ -1,0 +1,71 @@
+###### Auth
+
+Command line APi testing code
+
+# authToken = username:password, based 64 encoded string Convert-toBase64 'username:password'
+$authToken = Convert-ToBase64 'username:password'
+
+$Headers = @{'authToken' = "$authToken"}
+$LoginParameters = @{
+    Uri             = 'https://example.p6api.com/p6ws/restapi/login?DatabaseName=P4008PC05'
+    SessionVariable = 'Session'
+    Method          = 'POST'
+    Headers = $Headers
+}
+$LoginResponse = Invoke-WebRequest @LoginParameters
+$LoginResponse
+
+###### Get project id's
+
+$Parameters = @{
+    	Uri = 'https://example.p6api.com/p6ws/restapi/project?Fields=Name%2CObjectId'
+	WebSession = $Session
+	Method = 'GET'
+}
+$Test = Invoke-WebRequest @Parameters 
+$Test2 =  $Test.content.split(',')
+$Test2[0-5]
+
+###### Get Activities for project 1622
+
+$Parameters = @{
+    	Uri = 'https://example.p6api.com:443/p6ws/restapi/activity?Fields=AccountingVariance,AccountingVarianceLaborUnits,ActivityOwnerUserId,ActualDuration,ActualExpenseCost,ActualFinishDate,ActualLaborCost,ActualLaborUnits,ActualMaterialCost,ActualNonLaborCost,ActualNonLaborUnits,ActualStartDate,ActualThisPeriodLaborCost,ActualThisPeriodLaborUnits,ActualThisPeriodMaterialCost,ActualThisPeriodNonLaborCost,ActualThisPeriodNonLaborUnits,ActualTotalCost,ActualTotalUnits,AtCompletionDuration,AtCompletionExpenseCost,AtCompletionLaborCost,AtCompletionLaborUnits,AtCompletionLaborUnitsVariance,AtCompletionMaterialCost,AtCompletionNonLaborCost,AtCompletionNonLaborUnits,AtCompletionTotalCost,AtCompletionTotalUnits,AtCompletionVariance,AutoComputeActuals,Baseline1Duration,Baseline1FinishDate,Baseline1PlannedDuration,Baseline1PlannedExpenseCost,Baseline1PlannedLaborCost,Baseline1PlannedLaborUnits,Baseline1PlannedMaterialCost,Baseline1PlannedNonLaborCost,Baseline1PlannedNonLaborUnits,Baseline1PlannedTotalCost,Baseline1StartDate,Baseline2Duration,Baseline2FinishDate,Baseline2PlannedDuration,Baseline2PlannedExpenseCost,Baseline2PlannedLaborCost,Baseline2PlannedLaborUnits,Baseline2PlannedMaterialCost,Baseline2PlannedNonLaborCost,Baseline2PlannedNonLaborUnits,Baseline2PlannedTotalCost,Baseline2StartDate,Baseline3Duration,Baseline3FinishDate,Baseline3PlannedDuration,Baseline3PlannedExpenseCost,Baseline3PlannedLaborCost,Baseline3PlannedLaborUnits,Baseline3PlannedMaterialCost,Baseline3PlannedNonLaborCost,Baseline3PlannedNonLaborUnits,Baseline3PlannedTotalCost,Baseline3StartDate,BaselineDuration,BaselineFinishDate,BaselinePlannedDuration,BaselinePlannedExpenseCost,BaselinePlannedLaborCost,BaselinePlannedLaborUnits,BaselinePlannedMaterialCost,BaselinePlannedNonLaborCost,BaselinePlannedNonLaborUnits,BaselinePlannedTotalCost,BaselineStartDate,BudgetAtCompletion,CBSCode,CBSId,CBSObjectId,CalendarName,CalendarObjectId,CostPercentComplete,CostPercentOfPlanned,CostPerformanceIndex,CostPerformanceIndexLaborUnits,CostVariance,CostVarianceIndex,CostVarianceIndexLaborUnits,CostVarianceLaborUnits,CreateDate,CreateUser,DataDate,Duration1Variance,Duration2Variance,Duration3Variance,DurationPercentComplete,DurationPercentOfPlanned,DurationType,DurationVariance,EarlyFinishDate,EarlyStartDate,EarnedValueCost,EarnedValueLaborUnits,EstimateAtCompletionCost,EstimateAtCompletionLaborUnits,EstimateToComplete,EstimateToCompleteLaborUnits,EstimatedWeight,ExpectedFinishDate,ExpenseCost1Variance,ExpenseCost2Variance,ExpenseCost3Variance,ExpenseCostPercentComplete,ExpenseCostVariance,ExternalEarlyStartDate,ExternalLateFinishDate,Feedback,FinancialPeriodTmplId,FinishDate,FinishDate1Variance,FinishDate2Variance,FinishDate3Variance,FinishDateVariance,FloatPath,FloatPathOrder,FreeFloat,GUID,HasFutureBucketData,Id,IsBaseline,IsCritical,IsLongestPath,IsNewFeedback,IsStarred,IsTemplate,IsWorkPackage,LaborCost1Variance,LaborCost2Variance,LaborCost3Variance,LaborCostPercentComplete,LaborCostVariance,LaborUnits1Variance,LaborUnits2Variance,LaborUnits3Variance,LaborUnitsPercentComplete,LaborUnitsVariance,LastUpdateDate,LastUpdateUser,LateFinishDate,LateStartDate,LevelingPriority,LocationName,LocationObjectId,MaterialCost1Variance,MaterialCost2Variance,MaterialCost3Variance,MaterialCostPercentComplete,MaterialCostVariance,MaximumDuration,MinimumDuration,MostLikelyDuration,Name,NonLaborCost1Variance,NonLaborCost2Variance,NonLaborCost3Variance,NonLaborCostPercentComplete,NonLaborCostVariance,NonLaborUnits1Variance,NonLaborUnits2Variance,NonLaborUnits3Variance,NonLaborUnitsPercentComplete,NonLaborUnitsVariance,NotesToResources,ObjectId,OwnerIDArray,OwnerNamesArray,PercentComplete,PercentCompleteType,PerformancePercentComplete,PerformancePercentCompleteByLaborUnits,PhysicalPercentComplete,PlannedDuration,PlannedExpenseCost,PlannedFinishDate,PlannedLaborCost,PlannedLaborUnits,PlannedMaterialCost,PlannedNonLaborCost,PlannedNonLaborUnits,PlannedStartDate,PlannedTotalCost,PlannedTotalUnits,PlannedValueCost,PlannedValueLaborUnits,PostRespCriticalityIndex,PostResponsePessimisticFinish,PostResponsePessimisticStart,PreRespCriticalityIndex,PreResponsePessimisticFinish,PreResponsePessimisticStart,PrimaryConstraintDate,PrimaryConstraintType,PrimaryResourceId,PrimaryResourceName,PrimaryResourceObjectId,ProjectFlag,ProjectId,ProjectName,ProjectNameSepChar,ProjectObjectId,ProjectProjectFlag,RemainingDuration,RemainingEarlyFinishDate,RemainingEarlyStartDate,RemainingExpenseCost,RemainingFloat,RemainingLaborCost,RemainingLaborUnits,RemainingLateFinishDate,RemainingLateStartDate,RemainingMaterialCost,RemainingNonLaborCost,RemainingNonLaborUnits,RemainingTotalCost,RemainingTotalUnits,ResumeDate,ReviewFinishDate,ReviewRequired,ReviewStatus,SchedulePercentComplete,SchedulePerformanceIndex,SchedulePerformanceIndexLaborUnits,ScheduleVariance,ScheduleVarianceIndex,ScheduleVarianceIndexLaborUnits,ScheduleVarianceLaborUnits,ScopePercentComplete,SecondaryConstraintDate,SecondaryConstraintType,StartDate,StartDate1Variance,StartDate2Variance,StartDate3Variance,StartDateVariance,Status,StatusCode,SuspendDate,TaskStatusCompletion,TaskStatusDates,TaskStatusIndicator,ToCompletePerformanceIndex,TotalCost1Variance,TotalCost2Variance,TotalCost3Variance,TotalCostVariance,TotalFloat,TotalPastPeriodEarnedValueCostBCWP,TotalPastPeriodEarnedValueLaborUnits,TotalPastPeriodExpenseCost,TotalPastPeriodLaborCost,TotalPastPeriodLaborUnits,TotalPastPeriodMaterialCost,TotalPastPeriodNonLaborCost,TotalPastPeriodNonLaborUnits,TotalPastPeriodPlannedValueCost,TotalPastPeriodPlannedValueLaborUnits,Type,UnitsPercentComplete,UnreadCommentCount,WBSCode,WBSName,WBSNamePath,WBSObjectId,WBSPath,WorkPackageId,WorkPackageName&Filter=ProjectObjectId:eq:604'
+	WebSession = $Session
+	Method = 'GET'
+}
+$Test = Invoke-WebRequest @Parameters
+$Test
+
+$Parameters = @{
+    	Uri = "https://example.p6api.com:443/p6ws/restapi/activity?Fields=ActualFinishDate,CreateDate&Filter=ProjectObjectId:eq:604 :and: CreateDate:eq:'2023-08-21T13:49:00'"
+	WebSession = $Session
+	Method = 'GET'
+}
+$Test = Invoke-WebRequest @Parameters
+$Test.Content.Split(',').count
+
+$Parameters = @{
+    	Uri = "https://example.p6api.com:443/p6ws/restapi/activity?Fields=ActualFinishDate,CreateDate&Filter=CreateDate:eq:'2023-08-21T13:49:00' :and: ProjectObjectId:eq:604"
+	WebSession = $Session
+	Method = 'GET'
+}
+$Test = Invoke-WebRequest @Parameters
+$Test.Content.Split(',').count
+
+$Parameters = @{
+    	Uri = "https://example.p6api.com:443/p6ws/restapi/activity?Fields=ActualFinishDate,CreateDate,ProjectObjectId&Filter=CreateDate:eq:'2023-08-21T13:49:00'"
+	WebSession = $Session
+	Method = 'GET'
+}
+$Test = Invoke-WebRequest @Parameters 
+$Test.Content.Split(',').count
+
+$Parameters = @{
+    	Uri = "https://example.p6api.com:443/p6ws/restapi/activity?Fields=CreateDate,ProjectObjectId,LastUpdateDate&Filter=ProjectObjectId:eq:604"
+	WebSession = $Session
+	Method = 'GET'
+}
+$Test = Invoke-WebRequest @Parameters 
+$Test.Content.Split(',').count
+
+LastUpdateDate:gt:{date} :and: ProjectObjectID:eq:{id} ‘

@@ -1,0 +1,1 @@
+Example notes file which can be indexed using the argument completer in Get-Helpkey
