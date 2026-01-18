@@ -13,13 +13,24 @@ Function Write-RegExQuestion
         .PARAMETER Regex
         Array of options
 
+        .PARAMETER Default
+        Default answer if enter is pressed and no value provided
+
         .OUTPUTS
         [string]
 
         .EXAMPLE
         Write-RegExQuestion -RegEx '^\d{1,9}$' -Question "Enter a number"
+
+        .NOTES
+        You can rely on the PowerShell parameter validation and prompting for input for mandatory parameters. 
+        This function offers a more efficient option for input validation.
+
+        See Public\Get-DemoGeneralQuestion for using this function
     #>
 
+    [CmdletBinding()]
+    [OutputType([string])]
     Param
     (
         [Parameter(Mandatory=$true)]

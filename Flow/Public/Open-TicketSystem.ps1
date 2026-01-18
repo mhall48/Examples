@@ -2,15 +2,16 @@ function Open-TicketSystem
 {
     <#
          .SYNOPSIS
-        Opens this case in ticket system or knowledge base article
+        Opens the case specified in ticket system or opens knowledge base article
 
         .DESCRIPTION
-        Opens this case in ticket system or knowledge base article
+        Includes regex to strip out any text to grab the id of the case
 
         .EXAMPLE
         Open-TicketSystem -ticket 10415
 
         Opens a ticket with the id input
+
         .EXAMPLE
         Open-TicketSystem -ticket HFHG23423
 
@@ -25,10 +26,10 @@ function Open-TicketSystem
         [void]
 
         .NOTES
-        I feel it's better to not uses Aliases in functions in a module as it's more descriptive and discoverable to use full name
-        But for functions like this where it benefits from shortening the name for use on commandline, I set an alias 
-        in the Resource\ModuleVariables which can be seen using Get-HelpKey or alias key
-        E.g. instead of 'Open-TicketSystem 2345' you can type in 't 2345'  
+        It's better to not uses Aliases in functions in a module as it's more descriptive and discoverable to use full names.
+        But for functions like this where it benefits from shortening the name for use in PowerShell commandline, I set an alias 
+        in the Resource\ModuleVariables which can be seen using Get-HelpKey or alias 'key'.
+        E.g. instead of typing out 'Open-TicketSystem 2345' you can type 't 2345' in the PowerShell commandline.
     #>
     [CmdletBinding()]
     [OutputType([void])]

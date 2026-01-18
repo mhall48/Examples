@@ -7,12 +7,20 @@ function Get-QueueCoverage
         .DESCRIPTION
         Who is on the queue.
 
+        .PARAMETER Date
+        Date and time, if no value is provided it defaults to the current time
+
         .OUTPUTS
         [String]
 
         .EXAMPLE
-        Get-QueueCoverage      
+        Get-QueueCoverage
 
+        Dimi   : 6 to 9
+        Martin : 9 to 12
+        Ryan   : 12 to 14
+
+        Returns the queue coverage times and highlights in green the current person on the queue
     #>
 
     [CmdletBinding()]

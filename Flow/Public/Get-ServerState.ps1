@@ -61,7 +61,7 @@ Function Get-ServerState
         Author: Mark Hall
         Version: 1.0.0.0 | 15/7/2025
         Code can be run in a standard PowerShell window and doesn't require an admin window
-        Quick troubleshooting code for server state during MI troubleshooting
+        Quick troubleshooting code for server state during Major Incident troubleshooting
     #>
     [CmdletBinding()]
     [OutputType([PSCustomObject], [String])]
@@ -247,7 +247,7 @@ Function Get-ServerState
             $PSO.ScriptError = $False
         }
 
-        # Format output
+        # Format txt output
         if ($RawOutput)
         {
             return $PSO

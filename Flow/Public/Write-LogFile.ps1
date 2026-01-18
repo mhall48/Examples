@@ -32,8 +32,7 @@ function Write-LogFile
     #>
 
     [CmdletBinding()]
-    [OutputType([void])]
-    [OutputType([string])]
+    [OutputType([void, string])]
     param
     (
         [Parameter(ValueFromPipeline = $true, Mandatory = $true, Position = 0)]
