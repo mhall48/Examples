@@ -12,8 +12,8 @@
         'ConvertTo-Base64',
         'Find-WeekDay',
         'Get-Calendar',
-        'Get-Examples',
-        'Get-GitRepoFolder',
+        'Get-DemoGeneralQuestion'
+        'Get-ErrorStream',
         'Get-HelpKey',
         'Get-PatchTuesday',
         'Get-QueueCoverage',

@@ -26,15 +26,12 @@ Function Get-HelpKey
 
         Name     Definition
         ----     ----------
-        commands Get-ModuleCommands
-        e        Open-Explorer
-        example  Get-Examples
-        export   Set-PsdExportFunctions
-        import   Test-Import
-        key      Get-HelpKey
-        psb      Get-SomeoneElseBranch
-        rr       Get-RunCommand
-        work     Open-Flow
+        base64 ConvertTo-Base64
+        cal    Get-Calendar
+        import Test-Import
+        key    Get-HelpKey
+        q      Get-QueueCoverage
+        t      Open-TicketSystem
 
         Help info for my work flow
 

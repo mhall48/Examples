@@ -1,32 +1,37 @@
 function Set-TlsClient
 {
     <#
-    .SYNOPSIS
-    Sets the client-side .NET SSL/TLS configuration for the session.
+        .SYNOPSIS
+        Sets the client-side .NET SSL/TLS configuration for the session.
 
-    .DESCRIPTION
-    Optionally enables TLS protocols in the powershell session or disables cert trust checking.
+        .DESCRIPTION
+        Optionally enables TLS protocols in the powershell session or disables cert trust checking.
 
-    Changes persist for the session.
+        Changes persist for the session.
 
-    .PARAMETER Protocol
-    One or more TLS protocols to enable in the .NET TLS client.
+        .PARAMETER Protocol
+        One or more TLS protocols to enable in the .NET TLS client.
 
-    .PARAMETER SkipCertChecks
-    Disables trust checking of server certificates in the .NET TLS client.
+        .PARAMETER SkipCertChecks
+        Disables trust checking of server certificates in the .NET TLS client.
 
-    .OUTPUTS
-    [void]
+        .OUTPUTS
+        [void]
 
-    .EXAMPLE
-    Set-TlsClient -Protocol Tls12
+        .EXAMPLE
+        Set-TlsClient -Protocol Tls12
 
-    Enables the current powershell session to connect to servers running TLS 1.2.
+        Enables the current powershell session to connect to servers running TLS 1.2.
 
-    .EXAMPLE
-    Set-TlsClient -SkipCertChecks
+        .EXAMPLE
+        Set-TlsClient -SkipCertChecks
 
-    Enables the current powershell session to connect to servers with self-signed certificates.
+        Enables the current powershell session to connect to servers with self-signed certificates.
+
+        .NOTES
+        This was used for remote connectivity to force TLS 1.2 instead of using a lower version but also to allow for use 
+        of self signed certificates. This was prior to TLS 1.3 in 2018 which is the current standard.
+
     #>
     [CmdletBinding()]
     [OutputType([void])]

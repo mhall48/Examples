@@ -26,6 +26,9 @@ function Set-RoundMin
         12 March 2012 06:30:00
 
         Round a time to the closest 30 min interval
+        
+        .NOTES
+        This was used for windows patching intervals
     #>
 
     [CmdletBinding()]
